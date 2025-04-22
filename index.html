@@ -11,7 +11,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="assets/grusem.png" alt="">
+                <img src="assets/grusem.png" alt="Grusem Logo">
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -27,10 +27,40 @@
     </header>
 
     <section id="hero">
-        <div class="hero-content">
-            <h1>Soluciones Hidráulicas Profesionales</h1>
-            <p>Expertos en servicios hidráulicos con más de 15 años de experiencia</p>
-            <a href="#contacto" class="btn">Solicitar Presupuesto</a>
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <div class="carousel-item active">
+                    <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+1');"></div>
+                    <div class="hero-content">
+                        <h1>Soluciones Hidráulicas Profesionales</h1>
+                        <p>Expertos en servicios hidráulicos con más de 15 años de experiencia</p>
+                        <a href="#contacto" class="btn">Solicitar Presupuesto</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+2');"></div>
+                    <div class="hero-content">
+                        <h1>Calidad y Confianza Garantizada</h1>
+                        <p>Su mejor opción en servicios hidráulicos integrales</p>
+                        <a href="#servicios" class="btn">Nuestros Servicios</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+3');"></div>
+                    <div class="hero-content">
+                        <h1>Tecnología de Vanguardia</h1>
+                        <p>Utilizamos las herramientas más avanzadas para soluciones duraderas</p>
+                        <a href="#proyectos" class="btn">Ver Proyectos</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
         </div>
     </section>
 
@@ -255,10 +285,93 @@
         </div>
     </footer>
 
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/1234567890?text=Hola%20Grusem,%20necesito%20información%20sobre%20sus%20servicios" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
         // Toggle menu for mobile
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.carousel-control.prev');
+            const nextBtn = document.querySelector('.carousel-control.next');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Deactivate all indicators
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                
+                // Show the current slide and activate its indicator
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+
+            // Function to show the next slide
+            function nextSlide() {
+                let newIndex = currentSlide + 1;
+                if (newIndex >= slideCount) {
+                    newIndex = 0;
+                }
+                showSlide(newIndex);
+            }
+
+            // Function to show the previous slide
+            function prevSlide() {
+                let newIndex = currentSlide - 1;
+                if (newIndex < 0) {
+                    newIndex = slideCount - 1;
+                }
+                showSlide(newIndex);
+            }
+
+            // Set up event listeners for prev/next buttons
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            // Set up event listeners for indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(index);
+                    resetInterval();
+                });
+            });
+
+            // Start automatic sliding
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+
+            // Reset interval when user interacts
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+
+            // Add event listeners to reset interval on user interaction
+            prevBtn.addEventListener('click', resetInterval);
+            nextBtn.addEventListener('click', resetInterval);
+
+            // Start the carousel
+            startInterval();
         });
     </script>
 </body>
