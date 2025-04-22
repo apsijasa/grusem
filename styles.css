@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Estilos generales optimizados */
 :root {
     --color-white: #fdfefe;
     --color-blue: #3498db;
@@ -6,127 +6,51 @@
     --color-gray: #f8f9fa;
     --color-text: #333;
     --color-whatsapp: #25d366;
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-normal: 0.3s ease;
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .nosotros-content {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 768px) {
-    h2 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-    
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: var(--color-white);
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transform: translateY(-10px);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .nav-menu li {
-        margin: 0.5rem 0;
-    }
-    
-    .contacto-flex {
-        flex-direction: column;
-    }
-    
-    .carousel-control {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .carousel-control.prev {
-        left: 10px;
-    }
-    
-    .carousel-control.next {
-        right: 10px;
-    }
-    
-    .whatsapp-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    section {
-        padding: 3rem 0;
-    }
-    
-    #hero {
-        height: 60vh;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .carousel-control {
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
-    }
-    
-    .indicator {
-        width: 8px;
-        height: 8px;
-    }
-    
-    .whatsapp-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-        right: 20px;
-        bottom: 20px;
-    }
-}
-
-* {
+/* Reset y base */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-primary);
     color: var(--color-text);
     line-height: 1.6;
     background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Mejora de accesibilidad para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 .container {
@@ -136,9 +60,16 @@ body {
     padding: 2rem 0;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 h1, h2, h3 {
     margin-bottom: 1rem;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 h2 {
@@ -147,6 +78,7 @@ h2 {
     margin-bottom: 2rem;
     position: relative;
     padding-bottom: 1rem;
+    color: var(--color-text);
 }
 
 h2::after {
@@ -167,6 +99,16 @@ p {
 a {
     text-decoration: none;
     color: inherit;
+    transition: color var(--transition-normal);
+}
+
+a:hover, a:focus {
+    color: var(--color-blue);
+}
+
+a:focus {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
 }
 
 .btn {
@@ -176,13 +118,20 @@ a {
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-normal);
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
     background-color: var(--color-dark-blue);
+    color: var(--color-white);
+}
+
+.btn:focus {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
 }
 
 section {
@@ -205,7 +154,7 @@ header {
     width: 100%;
     z-index: 1000;
     background-color: var(--color-white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 nav {
@@ -236,42 +185,65 @@ nav {
 
 .nav-menu li a {
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
+    position: relative;
+    padding: 0.5rem 0;
 }
 
-.nav-menu li a:hover {
+.nav-menu li a:hover, .nav-menu li a:focus {
     color: var(--color-blue);
+}
+
+.nav-menu li a[aria-current="page"] {
+    color: var(--color-blue);
+}
+
+.nav-menu li a[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-blue);
 }
 
 .menu-toggle {
     display: none;
     font-size: 1.5rem;
+    background: transparent;
+    border: none;
     cursor: pointer;
+    color: var(--color-text);
+    padding: 0.5rem;
+}
+
+.menu-toggle:focus {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
 }
 
 /* Hero Section con Carrusel */
-#hero {
+#inicio {
     height: 80vh;
     position: relative;
     margin-top: 72px;
     overflow: hidden;
 }
 
-/* Estilos del contenedor del carrusel */
+/* Estilos optimizados del carrusel */
 .carousel-container {
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-/* Contenedor de slides */
 .carousel-slide {
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-/* Cada slide individual */
 .carousel-item {
     position: absolute;
     top: 0;
@@ -279,18 +251,21 @@ nav {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: opacity;
 }
 
 .carousel-item.active {
     opacity: 1;
+    visibility: visible;
     z-index: 1;
 }
 
-/* Fondo de cada slide */
+/* Optimización del fondo para mejor rendimiento */
 .carousel-background {
     position: absolute;
     top: 0;
@@ -301,6 +276,7 @@ nav {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
+    transform: translateZ(0); /* Forzar aceleración GPU */
 }
 
 .carousel-background::before {
@@ -330,11 +306,16 @@ nav {
     justify-content: center;
     cursor: pointer;
     z-index: 10;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-normal);
 }
 
-.carousel-control:hover {
+.carousel-control:hover, .carousel-control:focus {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control:focus {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
 }
 
 .carousel-control.prev {
@@ -361,12 +342,23 @@ nav {
     height: 12px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-normal);
+    padding: 0;
+}
+
+.indicator:hover, .indicator:focus {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .indicator.active {
     background-color: var(--color-white);
+}
+
+.indicator:focus {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
 }
 
 /* Contenido de hero */
@@ -376,15 +368,22 @@ nav {
     text-align: center;
     color: var(--color-white);
     z-index: 2;
+    animation: fadeIn 0.5s ease-in-out 0.5s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     margin-bottom: 2rem;
 }
 
@@ -393,6 +392,7 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    contain: layout style;
 }
 
 .servicio-card {
@@ -400,17 +400,25 @@ nav {
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.servicio-card:hover {
+.servicio-card:hover, .servicio-card:focus-within {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .servicio-card .icon {
     font-size: 2.5rem;
     color: var(--color-blue);
+    margin-bottom: 1rem;
+}
+
+.servicio-card h3 {
+    font-size: 1.3rem;
     margin-bottom: 1rem;
 }
 
@@ -427,6 +435,7 @@ nav {
 
 .nosotros-image {
     flex: 1;
+    content-visibility: auto;
 }
 
 .valores {
@@ -452,17 +461,23 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    contain: layout style;
 }
 
 .proyecto-card {
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+    background-color: var(--color-white);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.proyecto-card:hover {
+.proyecto-card:hover, .proyecto-card:focus-within {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
 }
 
 .proyecto-image {
@@ -470,16 +485,16 @@ nav {
     overflow: hidden;
 }
 
-.proyecto-card h3, .proyecto-card p {
+.proyecto-card h3 {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
     padding: 0 1.5rem;
 }
 
-.proyecto-card h3 {
-    margin-top: 1.5rem;
-}
-
 .proyecto-card p {
+    padding: 0 1.5rem;
     margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 /* Testimonios */
@@ -493,20 +508,38 @@ nav {
     gap: 2rem;
     padding: 1rem 0;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Mejor desplazamiento en iOS */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-blue) var(--color-gray);
+}
+
+.testimonios-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.testimonios-slider::-webkit-scrollbar-track {
+    background: var(--color-gray);
+}
+
+.testimonios-slider::-webkit-scrollbar-thumb {
+    background-color: var(--color-blue);
+    border-radius: 6px;
 }
 
 .testimonio {
     min-width: 300px;
     flex: 1;
     scroll-snap-align: start;
+    margin: 0;
 }
 
 .testimonio-content {
     background-color: var(--color-white);
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     position: relative;
+    height: 100%;
 }
 
 .testimonio-content::before {
@@ -521,11 +554,17 @@ nav {
 
 .cliente {
     margin-top: 1.5rem;
+    font-style: normal;
 }
 
 .cliente strong {
     display: block;
     color: var(--color-blue);
+    font-weight: 600;
+}
+
+.cliente cite {
+    font-style: normal;
 }
 
 /* Contacto */
@@ -552,6 +591,15 @@ nav {
     text-align: center;
 }
 
+.info-item a {
+    color: var(--color-text);
+    transition: color var(--transition-normal);
+}
+
+.info-item a:hover, .info-item a:focus {
+    color: var(--color-blue);
+}
+
 .social-media {
     display: flex;
     gap: 1rem;
@@ -567,15 +615,24 @@ nav {
     background-color: var(--color-blue);
     color: var(--color-white);
     border-radius: 50%;
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-normal), transform var(--transition-normal);
 }
 
-.social-media a:hover {
+.social-media a:hover, .social-media a:focus {
     background-color: var(--color-dark-blue);
+    transform: translateY(-3px);
+    color: var(--color-white);
 }
 
+.social-media a:focus {
+    outline: 2px solid var(--color-dark-blue);
+    outline-offset: 2px;
+}
+
+/* Optimización del formulario de contacto */
 .form-group {
     margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .form-group input,
@@ -586,10 +643,21 @@ nav {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-family: inherit;
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+    background-color: var(--color-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
 }
 
 .form-group textarea {
     resize: vertical;
+    min-height: 120px;
 }
 
 /* Footer */
@@ -597,6 +665,7 @@ footer {
     background-color: #222;
     color: var(--color-white);
     padding: 3rem 0 1rem;
+    margin-top: 2rem;
 }
 
 .footer-content {
@@ -616,6 +685,7 @@ footer {
     position: relative;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .footer-links h3::after,
@@ -640,6 +710,21 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+.footer-links a {
+    color: var(--color-white);
+    opacity: 0.8;
+    transition: opacity var(--transition-normal);
+}
+
+.footer-links a:hover, .footer-links a:focus {
+    opacity: 1;
+    color: var(--color-white);
+}
+
+.footer-services li {
+    opacity: 0.8;
+}
+
 .footer-newsletter p {
     margin-bottom: 1rem;
     opacity: 0.8;
@@ -654,6 +739,17 @@ footer {
     padding: 0.5rem;
     border: none;
     border-radius: 4px 0 0 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+}
+
+.footer-newsletter input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-newsletter input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .footer-newsletter button {
@@ -663,15 +759,22 @@ footer {
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
+    transition: background-color var(--transition-normal);
+}
+
+.footer-newsletter button:hover, .footer-newsletter button:focus {
+    background-color: var(--color-dark-blue);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
-/* Botón de WhatsApp flotante */
+/* Botón de WhatsApp flotante optimizado */
 .whatsapp-btn {
     position: fixed;
     bottom: 30px;
@@ -688,11 +791,18 @@ footer {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 100;
     transition: transform 0.3s, box-shadow 0.3s;
+    will-change: transform;
 }
 
-.whatsapp-btn:hover {
+.whatsapp-btn:hover, .whatsapp-btn:focus {
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.whatsapp-btn:focus {
+    outline: 2px solid var(--color-whatsapp);
+    outline-offset: 2px;
 }
 
 .whatsapp-btn::before {
@@ -719,5 +829,208 @@ footer {
     100% {
         transform: scale(1.4);
         opacity: 0;
+    }
+}
+
+/* Optimizaciones para rendimiento y accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .whatsapp-btn::before {
+        animation: none !important;
+    }
+    
+    .hero-content {
+        animation: none !important;
+    }
+}
+
+/* Mejoras responsivas optimizadas */
+@media (max-width: 992px) {
+    .nosotros-content {
+        flex-direction: column;
+    }
+    
+    .nosotros-image {
+        margin-top: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--color-white);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: var(--shadow-sm);
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal), visibility var(--transition-normal), transform var(--transition-normal);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+    
+    .contacto-flex {
+        flex-direction: column;
+    }
+    
+    .contacto-form {
+        margin-top: 2rem;
+    }
+    
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-control.prev {
+        left: 10px;
+    }
+    
+    .carousel-control.next {
+        right: 10px;
+    }
+    
+    .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    section {
+        padding: 3rem 0;
+    }
+    
+    #inicio {
+        height: 60vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .carousel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .whatsapp-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-links h3::after,
+    .footer-services h3::after,
+    .footer-newsletter h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-newsletter form {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Optimizaciones para impresión */
+@media print {
+    header, 
+    .whatsapp-btn,
+    .carousel-control,
+    .carousel-indicators,
+    .social-media,
+    footer {
+        display: none !important;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: black;
+    }
+    
+    .carousel-item {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+    }
+    
+    .carousel-background::before {
+        display: none;
+    }
+    
+    .hero-content {
+        color: black;
+    }
+    
+    .hero-content .btn {
+        border: 1px solid black;
+        background: transparent;
+        color: black;
     }
 }

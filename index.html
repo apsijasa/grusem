@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grusem - Servicios Hidráulicos</title>
+    <meta name="description" content="Grusem ofrece servicios hidráulicos profesionales con más de 15 años de experiencia. Instalación, reparación y mantenimiento de sistemas hidráulicos domésticos e industriales.">
+    <meta name="theme-color" content="#3498db">
+    <title>Grusem - Servicios Hidráulicos Profesionales</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Cargar Font Awesome solo con los íconos que necesitamos para reducir el tamaño -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Precargar imágenes críticas -->
+    <link rel="preload" as="image" href="assets/grusem.png">
+    <link rel="preload" as="image" href="https://via.placeholder.com/1920x1080?text=Slide+1">
+    
+    <!-- Agregar enlaces canónicos y favicon -->
+    <link rel="canonical" href="https://www.grusem.com/">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
 </head>
 <body>
     <header>
-        <nav>
+        <nav aria-label="Navegación principal">
             <div class="logo">
-                <img src="assets/grusem.png" alt="Grusem Logo">
+                <img src="assets/grusem.png" alt="Logo de Grusem" width="150" height="50">
             </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#inicio" aria-current="page">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
@@ -26,222 +38,235 @@
         </nav>
     </header>
 
-    <section id="hero">
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <div class="carousel-item active">
-                    <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+1');"></div>
-                    <div class="hero-content">
-                        <h1>Soluciones Hidráulicas Profesionales</h1>
-                        <p>Expertos en servicios hidráulicos con más de 15 años de experiencia</p>
-                        <a href="#contacto" class="btn">Solicitar Presupuesto</a>
+    <main>
+        <section id="inicio" aria-label="Sección principal">
+            <div class="carousel-container" aria-roledescription="carrusel" aria-label="Destacados de servicios">
+                <div class="carousel-slide">
+                    <div class="carousel-item active" aria-roledescription="diapositiva" aria-label="1 de 3">
+                        <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+1');"></div>
+                        <div class="hero-content">
+                            <h1>Soluciones Hidráulicas Profesionales</h1>
+                            <p>Expertos en servicios hidráulicos con más de 15 años de experiencia</p>
+                            <a href="#contacto" class="btn">Solicitar Presupuesto</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" aria-roledescription="diapositiva" aria-label="2 de 3">
+                        <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+2');"></div>
+                        <div class="hero-content">
+                            <h1>Calidad y Confianza Garantizada</h1>
+                            <p>Su mejor opción en servicios hidráulicos integrales</p>
+                            <a href="#servicios" class="btn">Nuestros Servicios</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" aria-roledescription="diapositiva" aria-label="3 de 3">
+                        <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+3');"></div>
+                        <div class="hero-content">
+                            <h1>Tecnología de Vanguardia</h1>
+                            <p>Utilizamos las herramientas más avanzadas para soluciones duraderas</p>
+                            <a href="#proyectos" class="btn">Ver Proyectos</a>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+2');"></div>
-                    <div class="hero-content">
-                        <h1>Calidad y Confianza Garantizada</h1>
-                        <p>Su mejor opción en servicios hidráulicos integrales</p>
-                        <a href="#servicios" class="btn">Nuestros Servicios</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="carousel-background" style="background-image: url('https://via.placeholder.com/1920x1080?text=Slide+3');"></div>
-                    <div class="hero-content">
-                        <h1>Tecnología de Vanguardia</h1>
-                        <p>Utilizamos las herramientas más avanzadas para soluciones duraderas</p>
-                        <a href="#proyectos" class="btn">Ver Proyectos</a>
-                    </div>
+                <button class="carousel-control prev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <button class="carousel-control next" aria-label="Siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                <div class="carousel-indicators" role="tablist">
+                    <button class="indicator active" role="tab" aria-label="Diapositiva 1" aria-selected="true"></button>
+                    <button class="indicator" role="tab" aria-label="Diapositiva 2" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Diapositiva 3" aria-selected="false"></button>
                 </div>
             </div>
-            <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
-            <div class="carousel-indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="servicios">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="servicios-grid">
-                <div class="servicio-card">
-                    <div class="icon">
-                        <i class="fas fa-faucet"></i>
+        <section id="servicios" aria-labelledby="servicios-titulo">
+            <div class="container">
+                <h2 id="servicios-titulo">Nuestros Servicios</h2>
+                <div class="servicios-grid">
+                    <div class="servicio-card">
+                        <div class="icon" aria-hidden="true">
+                            <i class="fas fa-faucet"></i>
+                        </div>
+                        <h3>Instalación y Reparación</h3>
+                        <p>Instalamos y reparamos todo tipo de sistemas hidráulicos domésticos e industriales.</p>
                     </div>
-                    <h3>Instalación y Reparación</h3>
-                    <p>Instalamos y reparamos todo tipo de sistemas hidráulicos domésticos e industriales.</p>
-                </div>
-                <div class="servicio-card">
-                    <div class="icon">
-                        <i class="fas fa-shower"></i>
+                    <div class="servicio-card">
+                        <div class="icon" aria-hidden="true">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <h3>Mantenimiento Preventivo</h3>
+                        <p>Mantenemos sus sistemas hidráulicos funcionando óptimamente para prevenir averías.</p>
                     </div>
-                    <h3>Mantenimiento Preventivo</h3>
-                    <p>Mantenemos sus sistemas hidráulicos funcionando óptimamente para prevenir averías.</p>
-                </div>
-                <div class="servicio-card">
-                    <div class="icon">
-                        <i class="fas fa-tint"></i>
+                    <div class="servicio-card">
+                        <div class="icon" aria-hidden="true">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Soluciones de Drenaje</h3>
+                        <p>Diseñamos e implementamos sistemas de drenaje eficientes y duraderos.</p>
                     </div>
-                    <h3>Soluciones de Drenaje</h3>
-                    <p>Diseñamos e implementamos sistemas de drenaje eficientes y duraderos.</p>
-                </div>
-                <div class="servicio-card">
-                    <div class="icon">
-                        <i class="fas fa-tools"></i>
+                    <div class="servicio-card">
+                        <div class="icon" aria-hidden="true">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Servicios de Emergencia</h3>
+                        <p>Atendemos emergencias hidráulicas las 24 horas del día, los 7 días de la semana.</p>
                     </div>
-                    <h3>Servicios de Emergencia</h3>
-                    <p>Atendemos emergencias hidráulicas las 24 horas del día, los 7 días de la semana.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="nosotros">
-        <div class="container">
-            <div class="nosotros-content">
-                <div class="nosotros-text">
-                    <h2>¿Quiénes Somos?</h2>
-                    <p>En Grusem, somos una empresa líder en servicios hidráulicos con más de 15 años de experiencia en el sector. Nuestro equipo altamente calificado está comprometido con la excelencia y la satisfacción del cliente.</p>
-                    <p>Utilizamos tecnología de punta y metodologías innovadoras para ofrecer soluciones eficientes y duraderas a todos nuestros clientes, tanto residenciales como comerciales e industriales.</p>
-                    <div class="valores">
-                        <div class="valor">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Calidad</span>
-                        </div>
-                        <div class="valor">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Puntualidad</span>
-                        </div>
-                        <div class="valor">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Profesionalismo</span>
+        <section id="nosotros" aria-labelledby="nosotros-titulo">
+            <div class="container">
+                <div class="nosotros-content">
+                    <div class="nosotros-text">
+                        <h2 id="nosotros-titulo">¿Quiénes Somos?</h2>
+                        <p>En Grusem, somos una empresa líder en servicios hidráulicos con más de 15 años de experiencia en el sector. Nuestro equipo altamente calificado está comprometido con la excelencia y la satisfacción del cliente.</p>
+                        <p>Utilizamos tecnología de punta y metodologías innovadoras para ofrecer soluciones eficientes y duraderas a todos nuestros clientes, tanto residenciales como comerciales e industriales.</p>
+                        <div class="valores">
+                            <div class="valor">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Calidad</span>
+                            </div>
+                            <div class="valor">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Puntualidad</span>
+                            </div>
+                            <div class="valor">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Profesionalismo</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="nosotros-image">
-                    <div class="image-placeholder"></div>
+                    <div class="nosotros-image">
+                        <div class="image-placeholder" aria-label="Imagen representativa de nuestro equipo"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="proyectos">
-        <div class="container">
-            <h2>Proyectos Destacados</h2>
-            <div class="proyectos-grid">
-                <div class="proyecto-card">
-                    <div class="proyecto-image">
-                        <div class="image-placeholder"></div>
-                    </div>
-                    <h3>Sistema de Riego Automatizado</h3>
-                    <p>Implementación de sistema de riego inteligente para complejo residencial.</p>
-                </div>
-                <div class="proyecto-card">
-                    <div class="proyecto-image">
-                        <div class="image-placeholder"></div>
-                    </div>
-                    <h3>Red Hidráulica Industrial</h3>
-                    <p>Diseño e instalación de red hidráulica para planta de manufactura.</p>
-                </div>
-                <div class="proyecto-card">
-                    <div class="proyecto-image">
-                        <div class="image-placeholder"></div>
-                    </div>
-                    <h3>Remodelación de Baños</h3>
-                    <p>Renovación completa de sistemas hidráulicos en cadena hotelera.</p>
+        <section id="proyectos" aria-labelledby="proyectos-titulo">
+            <div class="container">
+                <h2 id="proyectos-titulo">Proyectos Destacados</h2>
+                <div class="proyectos-grid">
+                    <article class="proyecto-card">
+                        <div class="proyecto-image">
+                            <div class="image-placeholder" aria-label="Imagen de Sistema de Riego Automatizado"></div>
+                        </div>
+                        <h3>Sistema de Riego Automatizado</h3>
+                        <p>Implementación de sistema de riego inteligente para complejo residencial.</p>
+                    </article>
+                    <article class="proyecto-card">
+                        <div class="proyecto-image">
+                            <div class="image-placeholder" aria-label="Imagen de Red Hidráulica Industrial"></div>
+                        </div>
+                        <h3>Red Hidráulica Industrial</h3>
+                        <p>Diseño e instalación de red hidráulica para planta de manufactura.</p>
+                    </article>
+                    <article class="proyecto-card">
+                        <div class="proyecto-image">
+                            <div class="image-placeholder" aria-label="Imagen de Remodelación de Baños"></div>
+                        </div>
+                        <h3>Remodelación de Baños</h3>
+                        <p>Renovación completa de sistemas hidráulicos en cadena hotelera.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="testimonios">
-        <div class="container">
-            <h2>Lo Que Dicen Nuestros Clientes</h2>
-            <div class="testimonios-slider">
-                <div class="testimonio">
-                    <div class="testimonio-content">
-                        <p>"El servicio de Grusem superó nuestras expectativas. Profesionales, rápidos y eficientes. Altamente recomendable."</p>
-                        <div class="cliente">
-                            <strong>María Rodríguez</strong>
-                            <span>Propietaria de Residencia</span>
+        <section id="testimonios" aria-labelledby="testimonios-titulo">
+            <div class="container">
+                <h2 id="testimonios-titulo">Lo Que Dicen Nuestros Clientes</h2>
+                <div class="testimonios-slider">
+                    <blockquote class="testimonio">
+                        <div class="testimonio-content">
+                            <p>"El servicio de Grusem superó nuestras expectativas. Profesionales, rápidos y eficientes. Altamente recomendable."</p>
+                            <footer class="cliente">
+                                <cite>
+                                    <strong>María Rodríguez</strong>
+                                    <span>Propietaria de Residencia</span>
+                                </cite>
+                            </footer>
                         </div>
-                    </div>
-                </div>
-                <div class="testimonio">
-                    <div class="testimonio-content">
-                        <p>"Contratamos a Grusem para un proyecto industrial complejo y entregaron resultados excepcionales. Seguiremos trabajando con ellos."</p>
-                        <div class="cliente">
-                            <strong>Carlos Méndez</strong>
-                            <span>Gerente de Operaciones</span>
+                    </blockquote>
+                    <blockquote class="testimonio">
+                        <div class="testimonio-content">
+                            <p>"Contratamos a Grusem para un proyecto industrial complejo y entregaron resultados excepcionales. Seguiremos trabajando con ellos."</p>
+                            <footer class="cliente">
+                                <cite>
+                                    <strong>Carlos Méndez</strong>
+                                    <span>Gerente de Operaciones</span>
+                                </cite>
+                            </footer>
                         </div>
-                    </div>
+                    </blockquote>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contacto">
-        <div class="container">
-            <h2>Contáctenos</h2>
-            <div class="contacto-flex">
-                <div class="contacto-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Av. Principal #123, Ciudad</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+123 456 7890</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>info@grusem.com</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <p>Lun - Vie: 8:00 - 18:00</p>
-                    </div>
-                    <div class="social-media">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="contacto-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Nombre" required>
+        <section id="contacto" aria-labelledby="contacto-titulo">
+            <div class="container">
+                <h2 id="contacto-titulo">Contáctenos</h2>
+                <div class="contacto-flex">
+                    <div class="contacto-info">
+                        <address>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <p>Av. Principal #123, Ciudad</p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                                <p><a href="tel:+1234567890">+123 456 7890</a></p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <p><a href="mailto:info@grusem.com">info@grusem.com</a></p>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock" aria-hidden="true"></i>
+                                <p>Lun - Vie: 8:00 - 18:00</p>
+                            </div>
+                        </address>
+                        <div class="social-media" aria-label="Redes sociales">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Correo electrónico" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Teléfono">
-                        </div>
-                        <div class="form-group">
-                            <select>
-                                <option value="" disabled selected>Servicio que necesita</option>
-                                <option value="instalacion">Instalación</option>
-                                <option value="reparacion">Reparación</option>
-                                <option value="mantenimiento">Mantenimiento</option>
-                                <option value="emergencia">Emergencia</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Mensaje" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensaje</button>
-                    </form>
+                    </div>
+                    <div class="contacto-form">
+                        <form action="procesar.php" method="POST">
+                            <div class="form-group">
+                                <label for="nombre" class="sr-only">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Correo electrónico</label>
+                                <input type="email" id="email" name="email" placeholder="Correo electrónico" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono" class="sr-only">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" autocomplete="tel">
+                            </div>
+                            <div class="form-group">
+                                <label for="servicio" class="sr-only">Servicio que necesita</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="" disabled selected>Servicio que necesita</option>
+                                    <option value="instalacion">Instalación</option>
+                                    <option value="reparacion">Reparación</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                    <option value="emergencia">Emergencia</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mensaje" class="sr-only">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" placeholder="Mensaje" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Enviar Mensaje</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -273,8 +298,9 @@
                 <div class="footer-newsletter">
                     <h3>Boletín Informativo</h3>
                     <p>Suscríbase para recibir actualizaciones y ofertas especiales.</p>
-                    <form>
-                        <input type="email" placeholder="Correo electrónico">
+                    <form action="suscribir.php" method="POST">
+                        <label for="newsletter-email" class="sr-only">Correo electrónico</label>
+                        <input type="email" id="newsletter-email" name="email" placeholder="Correo electrónico" required>
                         <button type="submit">Suscribirse</button>
                     </form>
                 </div>
@@ -286,66 +312,79 @@
     </footer>
 
     <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/1234567890?text=Hola%20Grusem,%20necesito%20información%20sobre%20sus%20servicios" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/1234567890?text=Hola%20Grusem,%20necesito%20información%20sobre%20sus%20servicios" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <script>
-        // Toggle menu for mobile
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
-        // Carousel functionality
+    <!-- Cargar scripts al final para mejorar el rendimiento -->
+    <script async>
         document.addEventListener('DOMContentLoaded', function() {
+            // Navegación móvil
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+                    this.setAttribute('aria-expanded', !expanded);
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Funcionalidad del carrusel
             const slides = document.querySelectorAll('.carousel-item');
             const indicators = document.querySelectorAll('.indicator');
             const prevBtn = document.querySelector('.carousel-control.prev');
             const nextBtn = document.querySelector('.carousel-control.next');
+            
+            if(!slides.length) return;
+            
             let currentSlide = 0;
             const slideCount = slides.length;
             let slideInterval;
+            let isPageVisible = true;
 
             // Function to show a specific slide
             function showSlide(index) {
-                // Hide all slides
-                slides.forEach(slide => {
+                slides.forEach((slide, i) => {
                     slide.classList.remove('active');
+                    slide.setAttribute('aria-hidden', 'true');
                 });
                 
-                // Deactivate all indicators
-                indicators.forEach(indicator => {
+                indicators.forEach((indicator, i) => {
                     indicator.classList.remove('active');
+                    indicator.setAttribute('aria-selected', 'false');
                 });
                 
-                // Show the current slide and activate its indicator
                 slides[index].classList.add('active');
+                slides[index].setAttribute('aria-hidden', 'false');
                 indicators[index].classList.add('active');
+                indicators[index].setAttribute('aria-selected', 'true');
                 
                 currentSlide = index;
             }
 
             // Function to show the next slide
             function nextSlide() {
-                let newIndex = currentSlide + 1;
-                if (newIndex >= slideCount) {
-                    newIndex = 0;
-                }
-                showSlide(newIndex);
+                if (!isPageVisible) return;
+                showSlide((currentSlide + 1) % slideCount);
             }
 
             // Function to show the previous slide
             function prevSlide() {
-                let newIndex = currentSlide - 1;
-                if (newIndex < 0) {
-                    newIndex = slideCount - 1;
-                }
-                showSlide(newIndex);
+                showSlide(currentSlide > 0 ? currentSlide - 1 : slideCount - 1);
             }
 
-            // Set up event listeners for prev/next buttons
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            // Set up event listeners
+            if (prevBtn) prevBtn.addEventListener('click', function() {
+                prevSlide();
+                resetInterval();
+            });
+            
+            if (nextBtn) nextBtn.addEventListener('click', function() {
+                nextSlide();
+                resetInterval();
+            });
 
             // Set up event listeners for indicators
             indicators.forEach((indicator, index) => {
@@ -353,22 +392,64 @@
                     showSlide(index);
                     resetInterval();
                 });
+                
+                // Keyboard accessibility
+                indicator.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showSlide(index);
+                        resetInterval();
+                    }
+                });
             });
 
             // Start automatic sliding
             function startInterval() {
-                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+                slideInterval = setInterval(nextSlide, 5000);
             }
 
             // Reset interval when user interacts
             function resetInterval() {
                 clearInterval(slideInterval);
-                startInterval();
+                if (isPageVisible) startInterval();
             }
 
-            // Add event listeners to reset interval on user interaction
-            prevBtn.addEventListener('click', resetInterval);
-            nextBtn.addEventListener('click', resetInterval);
+            // Pause carousel when page is not visible
+            document.addEventListener('visibilitychange', function() {
+                isPageVisible = document.visibilityState === 'visible';
+                if (isPageVisible) {
+                    startInterval();
+                } else {
+                    clearInterval(slideInterval);
+                }
+            });
+
+            // Swipe functionality for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const carousel = document.querySelector('.carousel-container');
+            if (carousel) {
+                carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                
+                carousel.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        nextSlide();
+                        resetInterval();
+                    } else if (touchEndX > touchStartX + swipeThreshold) {
+                        prevSlide();
+                        resetInterval();
+                    }
+                }
+            }
 
             // Start the carousel
             startInterval();
