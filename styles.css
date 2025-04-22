@@ -88,6 +88,17 @@ section {
     min-height: 250px;
 }
 
+/* Logo en el header */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 50px;
+    width: auto;
+}
+
 /* Header y Navegación */
 header {
     position: fixed;
